@@ -16,8 +16,6 @@ SLAVE_RENOTIFY=${SLAVE_RENOTIFY:-no}
 SLAVE_CYCLE_INTERVAL=${SLAVE_CYCLE_INTERVAL:-10}
 DEFAULT_TTL=${DEFAULT_TTL:-3600}
 HOSTNAME=${HOSTNAME:-$(hostname -f)}
-DEFAULT_SOA_NAME=${DEFAULT_SOA_NAME:-$HOSTNAME}
-DEFAULT_SOA_MAIL=${DEFAULT_SOA_MAIL:-$(echo "admin.${HOSTNAME#*\.}")}
 ALLOW_AXFR_IPS=${ALLOW_AXFR_IPS:-127.0.0.0/8}
 ALSO_NOTIFY=${ALSO_NOTIFY}
 ALLOW_NOTIFY_FROM=${ALLOW_NOTIFY_FROM:-default}
@@ -42,7 +40,6 @@ OPTION_ARRAY+=("--launch=gsqlite3")
 OPTION_ARRAY+=("--gsqlite3-database=${SQLITEDB_FULLPATH}")
 OPTION_ARRAY+=("--gsqlite3-pragma-foreign-keys")
 OPTION_ARRAY+=("--gsqlite3-pragma-synchronous=0")
-OPTION_ARRAY+=("--default-soa-name=${DEFAULT_SOA_NAME}")
 OPTION_ARRAY+=("--allow-axfr-ips=${ALLOW_AXFR_IPS}")
 OPTION_ARRAY+=("--daemon=no --no-config")
 
